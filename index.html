@@ -9,8 +9,9 @@
          若脚本被禁用，则不加 .js，首屏元素保持默认可见，不会永久留白。 -->
     <script>document.documentElement.classList.add('js');</script>
 
-    <!-- ── 站点图标 ────────────────────────────────────────────────────── -->
-    <link rel="icon" href="favicon.ico" sizes="any">
+    <!-- ── 站点图标 ──────────────────────────────────────────────────────
+         只声明 PNG，仓库里不放多尺寸 favicon.ico —— 现代浏览器都认下面的显式
+         声明，不会再去盲取根路径的 /favicon.ico。 -->
     <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-title" content="浮生渡忧舫">

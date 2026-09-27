@@ -12,8 +12,21 @@
 
 ---
 
+## 预览
+
+**首屏** —— 开场是浏览器端实时抠像的「御剑飞行」：真人素材沿一条曲线天路飞向画面右上角的天边云隙，身后拖出多重掠影，抵达后淡出并把主标题交给观众。
+
+![首屏](docs/screenshot-home.jpg)
+
+**近期作品** —— 三联长卷卡片，悬停 3D 翻转，点开是详情浮层（简介 / 核心能力 / 参数表 / 外链与页面截图画廊）。
+
+![近期作品](docs/screenshot-works.jpg)
+
+---
+
 ## 目录
 
+- [预览](#预览)
 - [功能特性](#功能特性)
 - [技术要点](#技术要点)
 - [目录结构](#目录结构)
@@ -101,10 +114,12 @@ float a  = clamp((0.80 - gn) / 0.58, 0.0, 1.0);
 personal-homepage/                 ← 本仓库的根就是这个层级
 ├── index.html                    # 整站（HTML + CSS + JS 全内联，约 3800 行）
 ├── vercel.json                   # Vercel 部署配置（缓存策略 + 安全响应头）
-├── favicon.ico                   # 站点图标（16/32/48/64 多尺寸）
 ├── LICENSE                       # MIT
 ├── README.md
 ├── generate_background.py        # ⚠ 早期背景图试验脚本，产物已不在站内，见下方说明
+├── docs/                         # 仅供 README 展示的页面截图，不参与站点运行
+│   ├── screenshot-home.jpg       #   首屏 1440×900
+│   └── screenshot-works.jpg      #   作品区 1440×900
 └── assets/
     ├── hero-bg-new.jpg           # 首屏背景（仙侠山峦）
     ├── about.jpg                 # 「关于」区配图
