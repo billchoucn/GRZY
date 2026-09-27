@@ -1,0 +1,22 @@
+# 统一以 LF 换行提交到仓库，避免 Windows / macOS 协作时整文件 diff
+* text=auto eol=lf
+
+# 明确标注二进制，禁止 Git 做任何换行或编码转换
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.mp4  binary
+*.mp3  binary
+*.woff binary
+*.woff2 binary
+
+# 文本类型沿用 LF
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.py   text eol=lf
