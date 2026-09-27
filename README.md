@@ -6,6 +6,10 @@
 
 浏览器直接打开 `index.html` 即可运行，不需要 npm、不需要打包、不需要任何后端。
 
+**仓库** [billchoucn/GRZY](https://github.com/billchoucn/GRZY) · **许可** [MIT](LICENSE) · **部署** Vercel 零配置静态托管
+
+> 注意：`file://` 直接打开时开场动画会降级（跨源限制，见「本地预览」），想看完整效果请起一个本地 HTTP 服务。
+
 ---
 
 ## 目录
@@ -94,7 +98,7 @@ float a  = clamp((0.80 - gn) / 0.58, 0.0, 1.0);
 ## 目录结构
 
 ```
-personal-homepage/
+personal-homepage/                 ← 本仓库的根就是这个层级
 ├── index.html                    # 整站（HTML + CSS + JS 全内联，约 3800 行）
 ├── vercel.json                   # Vercel 部署配置（缓存策略 + 安全响应头）
 ├── favicon.ico                   # 站点图标（16/32/48/64 多尺寸）
@@ -122,6 +126,10 @@ personal-homepage/
         └── xg-code.jpg
 ```
 
+> `index.html` 的注释里偶尔会提到 `_assets-source/` —— 那是作者本地的**开发与验证脚本目录**
+> （资源审计、Vercel 仿真服务、动画回归脚本、素材原图归档），**有意不进本仓库**，
+> 否则会把几万行中间产物一起搬进来。缺少它不影响站点运行，按本文档的步骤自查即可。
+
 ---
 
 ## 本地预览
@@ -148,29 +156,30 @@ npx serve .
 
 ## 部署到 Vercel
 
-本仓库是纯静态站，Vercel 可**零配置**识别。推荐流程：
+本仓库是纯静态站，Vercel 可**零配置**识别。
 
-**1. 推到 GitHub**
+**1. 仓库**
+
+已经推在 <https://github.com/billchoucn/GRZY>，`main` 分支就是可部署状态。之后的改动用：
 
 ```bash
-git init
-git add .
-git commit -m "feat: 浮生渡忧舫 · 个人主页"
-git branch -M main
-git remote add origin https://github.com/<你的用户名>/<仓库名>.git
-git push -u origin main
+git add -A
+git commit -m "fix: 说明这次改了什么"
+git push
 ```
 
-> ⚠️ 注意：**仓库根目录就应该是 `index.html` 所在层级**。如果你把 `personal-homepage/` 整个目录推进仓库，导入 Vercel 时需要把 Root Directory 设成 `personal-homepage`。
+> ⚠️ **仓库根就是 `index.html` 所在这一层**，导入 Vercel 时不需要动 Root Directory。
+> 如果把 `personal-homepage/` 这一层再套进仓库子目录，导入时才需要把 Root Directory 指到它。
 
 **2. 在 Vercel 导入**
 
 1. 打开 <https://vercel.com>，用 GitHub 账号登录
 2. **Add New… → Project**
-3. 在列表里找到刚才的仓库，点 **Import**
-4. Framework Preset 选 **Other**
-5. **Build Command** 留空，**Output Directory** 留空
-6. 点 **Deploy**
+3. 在列表里找到 **GRZY**，点 **Import**
+4. Framework Preset 选 **Other**；**Build Command**、**Output Directory** 都留空
+5. 点 **Deploy**
+
+之后每次 push 到 `main`，Vercel 会自动重新部署。
 
 几十秒后就能拿到一个 `https://<项目名>.vercel.app` 地址。
 

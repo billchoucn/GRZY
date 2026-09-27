@@ -41,11 +41,10 @@
 
     <!-- 字体表：preload 拿到之后再自己换成 stylesheet。
          ⚠️ 不要改回 media="print" onload="this.media='all'" —— 那种写法确实不阻塞
-            首帧渲染，却会**把 window.load 一起拖住**。实测（_assets-source/
-            probe_load_blocking2.js）：当 fonts.googleapis.com 被静默丢包（不是快速
-            RST，而是连接一直不返回）时，load 被推迟 21.3 秒。而本站全部入场时序
-            （加载屏 → 御剑飞行 → 文字浮现）都锚在 load 上，后果就是首屏动画像
-            死了一样停在加载屏不动 —— 同一条件下 preload 写法只用 49ms。 -->
+            首帧渲染，却会**把 window.load 一起拖住**。实测：把字体地址换成一个「连接
+            永不返回」的地址，那种写法下 load 被推迟 21.3 秒，换成 preload 只用 49ms。
+            而本站全部入场时序（加载屏 → 御剑飞行 → 文字浮现）都锚在 load 上，后果
+            就是首屏动画像死了一样停在加载屏不动。 -->
     <link rel="preload" as="style" onload="this.rel='stylesheet'"
           href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap">
     <noscript>
